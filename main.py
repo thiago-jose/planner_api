@@ -1,6 +1,7 @@
 import asyncio
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
+from fastapi.middleware.cors import CORSMiddleware
 
 from database.connection import Settings
 from routes.users import user_router
@@ -8,12 +9,22 @@ from routes.events import event_router
 
 import uvicorn
 
-app = FastAPI()
 settings = Settings()
+app = FastAPI()
 
 # Register routes
 app.include_router(user_router,  prefix="/user")
 app.include_router(event_router, prefix="/event")
+
+# register origins
+origins = ["*"]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.on_event("startup")
