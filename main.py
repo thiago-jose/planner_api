@@ -1,3 +1,4 @@
+import uvicorn
 import asyncio
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
@@ -7,7 +8,6 @@ from database.connection import Settings
 from routes.users import user_router
 from routes.events import event_router
 
-import uvicorn
 
 settings = Settings()
 app = FastAPI()
@@ -38,4 +38,6 @@ async def home():
 
 
 if __name__ == '__main__':
-    uvicorn.run("main:app", host="127.0.0.1", port=8080, reload=True)
+
+    uvicorn.run("main:app", host="127.0.0.1", port=8080,
+                reload=True)

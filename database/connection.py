@@ -2,7 +2,7 @@ from beanie import init_beanie, PydanticObjectId
 from motor.motor_asyncio import AsyncIOMotorClient
 from typing import Optional, Any, List
 from pydantic import BaseSettings, BaseModel
-from models.events import Event
+from models.events import Event, EventUpdate
 from models.users import User
 
 

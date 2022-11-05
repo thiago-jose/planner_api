@@ -27,5 +27,5 @@ async def default_client():
                                  base_url="http://app") as client:
         yield client
         # Clean up resources
-        # await Event.find_all().delete()
-        # await User.find_all().delete()
+        await Event.find_all().delete()
+        await User.find_all().delete()

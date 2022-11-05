@@ -42,6 +42,8 @@ async def create_event(body: Event, user: str = Depends(authenticate)) -> dict:
 async def update_event(id: PydanticObjectId, body: EventUpdate,
                        user: str = Depends(authenticate)) -> Event:
     event = await event_database.get(id)
+    print(event.creator)
+    print(user)
     if event.creator != user:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
