@@ -1,3 +1,4 @@
+from pydantic import BaseModel
 from beanie import Document
 from typing import Optional, List
 
@@ -29,7 +30,7 @@ class Event(Document):
         name = "events"
 
 
-class EventUpdate(Document):
+class EventUpdate(BaseModel):
     title: Optional[str]
     image: Optional[str]
     description: Optional[str]
