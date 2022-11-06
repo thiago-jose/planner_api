@@ -39,5 +39,6 @@ async def home():
 
 if __name__ == '__main__':
 
-    uvicorn.run("main:app", host="127.0.0.1", port=8080,
+    # Note: Host must be "0.0.0.0" for Docker port forward to work
+    uvicorn.run("main:app", host="0.0.0.0", port=8080,
                 reload=True)
